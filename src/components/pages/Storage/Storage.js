@@ -1,14 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import GridWrapper from "../../commons/GridWrapper/GridWrapper";
 import BasicSnackBar from "../../commons/BasicSnackBar/BasicSnackBar";
-import CommonButton from "../../commons/CommonButton";
+import UserTable from "../../commons/UserTable/UserTable";
+import BasicCard from "../../BasicCard/BasicCard";
 
 const Storage = () => {
-  const [open, setOpen] = React.useState(false);
-
-  const handleClick = () => {
-    setOpen(true);
-  };
+  const [open, setOpen] = useState(false);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -20,11 +17,15 @@ const Storage = () => {
 
   return (
     <GridWrapper>
-      Test
-      <CommonButton variant="contained" onClick={handleClick}>
-        Open success snackbar
-      </CommonButton>
-      <BasicSnackBar open={open} onClose={handleClose} severity="error" message={"Success"} />
+      <BasicCard
+        content={<UserTable onError={() => setOpen(true)} />}
+      ></BasicCard>
+      <BasicSnackBar
+        severity={"error"}
+        open={open}
+        message={"Data could not be fetched"}
+        onClose={handleClose}
+      />
     </GridWrapper>
   );
 };
