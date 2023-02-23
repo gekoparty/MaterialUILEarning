@@ -5,6 +5,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import BasicMenu from "../commons/BasicMenu/BasicMenu";
+import Popover from "@mui/material/Popover";
 
 const notifications = [
   {
@@ -41,13 +42,26 @@ const NotificationBell = ({ iconColor }) => {
         <IconButton
           color={iconColor}
           onClick={notifications.length ? handleOpen : null}
-          anchorEl={anchorEl}
+          
         >
           <Badge badgeContent={notifications.length} color="error">
             <NotificationsIcon />
           </Badge>
         </IconButton>
       </Tooltip>
+      <Popover
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+      ></Popover>
       <BasicMenu
         open={open}
         anchorEl={anchorEl}

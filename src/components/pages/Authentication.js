@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import BasicCard from "../BasicCard/BasicCard";
 import SearchBar from "../SearchBar/SearchBar";
 import CommonButton from "../commons/CommonButton";
