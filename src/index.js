@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Authentication from "./components/pages/Authentication";
 import {ThemeProvider}  from "@mui/material/styles";
 import { dashboardTheme } from "./dashboardTheme";
+import Database from "./components/pages/Database/Database";
+import Storage from "./components/pages/Storage/Storage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,6 +18,8 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="authentication" element={<Authentication />} />
+          <Route path="database" element={<Database />} />
+          <Route path="storage" element={<Storage />} />
         </Route>
       </Routes>
     </BrowserRouter>

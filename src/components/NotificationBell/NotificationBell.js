@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Badge from "@mui/material/Badge";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 
@@ -6,12 +6,23 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import BasicMenu from "../commons/BasicMenu/BasicMenu";
 
-const NotificationBell = ({ iconColor, badgeContent, onClick }) => {
-  const newNotifications = `You have ${badgeContent} messages`;
-  const noNotifications = "No new notifications";
+const notifications = [
+  {
+    id: 0,
+    label: "First notification",
+  },
+  {
+    id: 1,
+    label: "Second notification",
+  },
+];
 
-  const [open, setOpen] = useState(false);
+const NotificationBell = ({ iconColor }) => {
+  const [open, setOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const newNotifications = `You have ${notifications.length} new notifications!`;
+  const noNotifications = "No new notifications";
 
   const handleOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -21,17 +32,6 @@ const NotificationBell = ({ iconColor, badgeContent, onClick }) => {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const notifications = [
-    {
-      id: 0,
-      label: "First Notification",
-    },
-    {
-      id: 1,
-      label: "Second Notification",
-    },
-  ];
 
   return (
     <div>
